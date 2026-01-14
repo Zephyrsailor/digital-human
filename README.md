@@ -38,7 +38,29 @@ python server.py
 
 ## 前端客户端
 
-`s2s-client/` 目录包含 Web 前端，详见其中的说明。
+`s2s-client/` 目录包含基于 React + Vite 的 Web 前端。
+
+### 安装依赖
+
+```bash
+cd s2s-client
+npm install
+```
+
+### 启动开发服务器
+
+```bash
+npm run dev
+```
+
+默认运行在 `http://localhost:5173`
+
+### 构建生产版本
+
+```bash
+npm run build
+npm run preview  # 预览构建结果
+```
 
 ## API
 
