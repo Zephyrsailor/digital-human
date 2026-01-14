@@ -2,6 +2,12 @@
 
 基于火山引擎豆包端到端实时语音大模型，支持 LiveTalking 数字人渲染。
 
+## 环境要求
+
+- Python 3.12+
+- Node.js 18+
+- 现代浏览器（支持 WebSocket、Web Audio API、getUserMedia）
+
 ## 功能
 
 - 实时语音对话（端到端，无需 ASR/TTS 分离）
@@ -40,14 +46,26 @@ python server.py
 
 `s2s-client/` 目录包含基于 React + Vite 的 Web 前端。
 
-### 安装依赖
+### 1. 安装依赖
 
 ```bash
 cd s2s-client
 npm install
 ```
 
-### 启动开发服务器
+### 2. 配置环境变量
+
+```bash
+cp .env.example .env
+```
+
+编辑 `.env` 填入配置：
+- `VITE_WS_HOST` - 后端 WebSocket 服务器地址（如 `192.168.0.123` 或 `localhost`）
+- `VITE_WS_PORT` - 后端 WebSocket 端口（默认 `8888`）
+- `VITE_LIVETALKING_ENABLED` - 是否启用数字人（`true`/`false`）
+- `VITE_LIVETALKING_URL` - LiveTalking 服务地址（如 `http://localhost:8010`）
+
+### 3. 启动开发服务器
 
 ```bash
 npm run dev
@@ -61,6 +79,17 @@ npm run dev
 npm run build
 npm run preview  # 预览构建结果
 ```
+
+### HTTPS 配置（远程访问必需）
+
+浏览器要求 HTTPS 才能访问麦克风（localhost 除外）。如需远程访问，在 `s2s-client/ssl/` 目录放置证书：
+
+```bash
+mkdir -p s2s-client/ssl
+# 放入 server.key 和 server.crt
+```
+
+Vite 会自动检测并启用 HTTPS。
 
 ## API
 
