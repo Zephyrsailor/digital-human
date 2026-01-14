@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-gray-900 text-white overflow-hidden;
+  }
+}
+
+.visualizer-bar {
+  transition: height 0.1s ease;
+}
